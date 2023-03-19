@@ -1,5 +1,6 @@
 package com.arothy.search.external.com.kakao.blogsearch.api.protocol.request;
 
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Builder.Default;
@@ -9,6 +10,7 @@ import lombok.Data;
 @Builder
 public class BlogSearchRequest {
 
+    @NotEmpty
     String query;
 
     @Default

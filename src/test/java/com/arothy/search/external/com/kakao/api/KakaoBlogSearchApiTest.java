@@ -35,7 +35,7 @@ class KakaoBlogSearchApiTest {
     }
 
     @Test
-    public void givenInvalidPage_whenGetBlog_thenThrowBadRequestException() {
+    public void givenInvalidPage_whenGetBlog_thenThrowInvalidArgument() {
         // Given
         String query = "java";
         int page = 51;
@@ -47,6 +47,34 @@ class KakaoBlogSearchApiTest {
         // Then
         assertThat(thrown).isInstanceOf(FeignException.class);
         assertThat(thrown.getMessage()).contains("InvalidArgument");
+    }
+
+    @Test
+    public void givenInvalidQuery_whenGetBlog_thenThrowMissingParameter() {
+        // Given
+        String query = "";
+
+        // When
+        Throwable thrown = catchThrowable(
+            () -> kakaoBlogSearchApi.getBlog(BlogSearchRequest.builder().query(query).build()));
+
+        // Then
+        assertThat(thrown).isInstanceOf(FeignException.class);
+        assertThat(thrown.getMessage()).contains("MissingParameter");
+    }
+
+    @Test
+    public void givenInvalidQuery_whenGetBlog_thenThrowMissingParameter2() {
+        // Given
+        String query = null;
+
+        // When
+        Throwable thrown = catchThrowable(
+            () -> kakaoBlogSearchApi.getBlog(BlogSearchRequest.builder().query(query).build()));
+
+        // Then
+        assertThat(thrown).isInstanceOf(FeignException.class);
+        assertThat(thrown.getMessage()).contains("MissingParameter");
     }
 
 }
