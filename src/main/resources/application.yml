@@ -15,3 +15,8 @@ jpa:
 logging:
   level:
     root: INFO
+
+kakao-api:
+  url: https://dapi.kakao.com
+  key: KakaoAK 1d6233f707ae53d798ea21c38ce09a70
+
