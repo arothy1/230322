@@ -23,6 +23,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign:4.0.1")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("io.github.openfeign:feign-okhttp:12.2")
     implementation("io.github.openfeign:feign-jackson:12.2")
     implementation("io.github.openfeign:feign-slf4j:12.2")
