@@ -4,7 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import com.arothy.search.external.com.kakao.blogsearch.api.KakaoBlogSearchApi;
 import com.arothy.search.external.com.kakao.blogsearch.api.protocol.Blog;
-import java.util.Map;
+import com.arothy.search.external.com.kakao.blogsearch.api.protocol.request.BlogSearchRequest;
+import com.arothy.search.external.com.kakao.blogsearch.api.protocol.response.KakaoBlogResponse;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,13 +21,14 @@ class KakaoBlogSearchApiTest {
     @Test
     public void getBlog() {
         // Given
-        String query = "arothy";
+        String query = "java";
 
         // When
-        Blog blog = kakaoBlogSearchApi.getBlog(Map.of("query", query));
+        KakaoBlogResponse<List<Blog>> blogResponse = kakaoBlogSearchApi.getBlog(
+            BlogSearchRequest.builder().query(query).build());
 
         // Then
-        assertNotNull(blog);
+        assertNotNull(blogResponse);
     }
 
 }
