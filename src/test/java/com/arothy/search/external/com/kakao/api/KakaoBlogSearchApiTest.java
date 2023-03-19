@@ -1,11 +1,14 @@
 package com.arothy.search.external.com.kakao.api;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import com.arothy.search.external.com.kakao.blogsearch.api.KakaoBlogSearchApi;
 import com.arothy.search.external.com.kakao.blogsearch.api.protocol.Blog;
 import com.arothy.search.external.com.kakao.blogsearch.api.protocol.request.BlogSearchRequest;
 import com.arothy.search.external.com.kakao.blogsearch.api.protocol.response.KakaoBlogResponse;
+import feign.FeignException;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,18 +20,33 @@ class KakaoBlogSearchApiTest {
     @Autowired
     KakaoBlogSearchApi kakaoBlogSearchApi;
 
-
     @Test
-    public void getBlog() {
+    public void givenValidPage_whenGetBlog_thenReturnValidResponse() {
         // Given
         String query = "java";
+        int page = 1;
 
         // When
-        KakaoBlogResponse<List<Blog>> blogResponse = kakaoBlogSearchApi.getBlog(
-            BlogSearchRequest.builder().query(query).build());
+        KakaoBlogResponse<List<Blog>> response = kakaoBlogSearchApi.getBlog(
+            BlogSearchRequest.builder().query(query).page(page).build());
 
         // Then
-        assertNotNull(blogResponse);
+        assertThat(response).isNotNull();
+    }
+
+    @Test
+    public void givenInvalidPage_whenGetBlog_thenThrowBadRequestException() {
+        // Given
+        String query = "java";
+        int page = 51;
+
+        // When
+        Throwable thrown = catchThrowable(
+            () -> kakaoBlogSearchApi.getBlog(BlogSearchRequest.builder().query(query).page(page).build()));
+
+        // Then
+        assertThat(thrown).isInstanceOf(FeignException.class);
+        assertThat(thrown.getMessage()).contains("InvalidArgument");
     }
 
 }
