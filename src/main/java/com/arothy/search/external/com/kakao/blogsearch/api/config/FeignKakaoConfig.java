@@ -22,7 +22,7 @@ public class FeignKakaoConfig {
     @Value("${kakao-api.url}")
     String kakaoApiUrl;
 
-    @Bean(name = "kakaoBlogSearchApi")
+    @Bean
     public KakaoBlogSearchApi kakaoBlogSearchApi(@Autowired KakaoBlogSearchInterceptor kakaoBlogSearchInterceptor) {
         return Feign.builder()
             .contract(new SpringMvcContract())
