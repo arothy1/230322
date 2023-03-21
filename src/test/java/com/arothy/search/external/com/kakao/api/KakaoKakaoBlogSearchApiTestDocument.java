@@ -5,8 +5,8 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import com.arothy.search.external.com.kakao.blogsearch.api.KakaoBlogSearchApi;
-import com.arothy.search.external.com.kakao.blogsearch.api.protocol.Blog;
-import com.arothy.search.external.com.kakao.blogsearch.api.protocol.request.BlogSearchRequest;
+import com.arothy.search.external.com.kakao.blogsearch.api.protocol.KakaoBlog;
+import com.arothy.search.external.com.kakao.blogsearch.api.protocol.request.KakaoBlogSearchRequest;
 import com.arothy.search.external.com.kakao.blogsearch.api.protocol.response.KakaoBlogResponse;
 import feign.FeignException;
 import java.util.List;
@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class KakaoBlogSearchApiTest {
+class KakaoBlogSearchApiTestDocument {
 
     @Autowired
     KakaoBlogSearchApi kakaoBlogSearchApi;
@@ -27,8 +27,8 @@ class KakaoBlogSearchApiTest {
         int page = 1;
 
         // When
-        KakaoBlogResponse<List<Blog>> response = kakaoBlogSearchApi.getBlog(
-            BlogSearchRequest.builder().query(query).page(page).build());
+        KakaoBlogResponse<List<KakaoBlog>> response = kakaoBlogSearchApi.getBlog(
+            KakaoBlogSearchRequest.builder().query(query).page(page).build());
 
         // Then
         assertThat(response).isNotNull();
@@ -42,7 +42,7 @@ class KakaoBlogSearchApiTest {
 
         // When
         Throwable thrown = catchThrowable(
-            () -> kakaoBlogSearchApi.getBlog(BlogSearchRequest.builder().query(query).page(page).build()));
+            () -> kakaoBlogSearchApi.getBlog(KakaoBlogSearchRequest.builder().query(query).page(page).build()));
 
         // Then
         assertThat(thrown).isInstanceOf(FeignException.class);
@@ -56,7 +56,7 @@ class KakaoBlogSearchApiTest {
 
         // When
         Throwable thrown = catchThrowable(
-            () -> kakaoBlogSearchApi.getBlog(BlogSearchRequest.builder().query(query).build()));
+            () -> kakaoBlogSearchApi.getBlog(KakaoBlogSearchRequest.builder().query(query).build()));
 
         // Then
         assertThat(thrown).isInstanceOf(FeignException.class);
@@ -70,7 +70,7 @@ class KakaoBlogSearchApiTest {
 
         // When
         Throwable thrown = catchThrowable(
-            () -> kakaoBlogSearchApi.getBlog(BlogSearchRequest.builder().query(query).build()));
+            () -> kakaoBlogSearchApi.getBlog(KakaoBlogSearchRequest.builder().query(query).build()));
 
         // Then
         assertThat(thrown).isInstanceOf(FeignException.class);

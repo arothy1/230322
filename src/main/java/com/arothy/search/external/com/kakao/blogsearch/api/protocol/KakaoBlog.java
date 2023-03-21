@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Getter;
 
 @Getter
-public class Blog {
+public class KakaoBlog {
 
     String title;
     String contents;

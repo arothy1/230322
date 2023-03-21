@@ -8,13 +8,13 @@ import lombok.Data;
 
 @Data
 @Builder
-public class BlogSearchRequest {
+public class KakaoBlogSearchRequest {
 
     @NotEmpty
     String query;
 
     @Default
-    Sort sort = Sort.accuracy;
+    KakaoBlogSort sort = KakaoBlogSort.accuracy;
 
     @Size(min = 1, max = 50)
     Integer page;

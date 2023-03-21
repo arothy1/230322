@@ -2,7 +2,7 @@ package com.arothy.search.external.com.kakao.blogsearch.api.config;
 
 import com.arothy.search.external.com.kakao.blogsearch.api.KakaoBlogSearchApi;
 import feign.Feign;
-import feign.Logger;
+import feign.Logger.Level;
 import feign.Request;
 import feign.Retryer;
 import feign.jackson.JacksonDecoder;
@@ -32,7 +32,7 @@ public class FeignKakaoConfig {
             .encoder(new JacksonEncoder())
             .decoder(new JacksonDecoder())
             .logger(new Slf4jLogger("kakaoBlogSearchApi"))
-            .logLevel(Logger.Level.HEADERS)
+            .logLevel(Level.HEADERS)
             .requestInterceptor(kakaoBlogSearchInterceptor)
             .target(KakaoBlogSearchApi.class, kakaoApiUrl);
     }
