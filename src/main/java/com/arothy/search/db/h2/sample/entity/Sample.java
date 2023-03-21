@@ -1,4 +1,4 @@
-package com.arothy.search.persistence.h2.sample.entity;
+package com.arothy.search.db.h2.sample.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

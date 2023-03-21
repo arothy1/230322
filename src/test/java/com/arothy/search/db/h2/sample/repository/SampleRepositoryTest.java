@@ -1,8 +1,8 @@
-package com.arothy.search.persistence.h2.sample.repository;
+package com.arothy.search.db.h2.sample.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.arothy.search.persistence.h2.sample.entity.Sample;
+import com.arothy.search.db.h2.sample.entity.Sample;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

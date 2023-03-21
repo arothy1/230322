@@ -18,7 +18,7 @@ public class BlogDocumentSearchController {
     final BlogSearchService blogSearchService;
 
     @GetMapping
-    public BlogDocumentResponse search(@ModelAttribute @Valid BlogDocumentQuery blogDocumentQuery) {
+    public BlogDocumentResponse getBlogDocuments(@ModelAttribute @Valid BlogDocumentQuery blogDocumentQuery) {
         return blogSearchService.search(blogDocumentQuery);
     }
 

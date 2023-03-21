@@ -1,6 +1,6 @@
-package com.arothy.search.persistence.h2.sample.repository;
+package com.arothy.search.db.h2.sample.repository;
 
-import com.arothy.search.persistence.h2.sample.entity.Sample;
+import com.arothy.search.db.h2.sample.entity.Sample;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
