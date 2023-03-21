@@ -2,7 +2,6 @@ package com.arothy.search.external.com.kakao.api;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import com.arothy.search.external.com.kakao.blogsearch.api.KakaoBlogSearchApi;
 import com.arothy.search.external.com.kakao.blogsearch.api.protocol.KakaoBlog;
