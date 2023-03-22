@@ -22,6 +22,7 @@ public class BlogDocumentQuery {
     Integer itemsPerPage = 10;
 
     BlogDocumentSort sort = BlogDocumentSort.ACCURACY;
+    boolean increaseSearchCount = false;
 
     public KakaoBlogSearchRequest toKakaoApiQuery() {
         return KakaoBlogSearchRequest.builder()
