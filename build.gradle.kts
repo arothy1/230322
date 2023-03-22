@@ -27,6 +27,7 @@ dependencies {
     implementation("io.github.openfeign:feign-okhttp:12.2")
     implementation("io.github.openfeign:feign-jackson:12.2")
     implementation("io.github.openfeign:feign-slf4j:12.2")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
 
     compileOnly("org.projectlombok:lombok")
     runtimeOnly("com.h2database:h2")

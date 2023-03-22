@@ -1,6 +1,5 @@
 package com.arothy.search.api.blog.document.dto;
 
-import com.arothy.search.common.exception.GeneralException;
 import com.arothy.search.external.com.kakao.blogsearch.api.protocol.request.KakaoBlogSearchRequest;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;

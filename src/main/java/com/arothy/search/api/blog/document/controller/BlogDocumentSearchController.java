@@ -3,7 +3,12 @@ package com.arothy.search.api.blog.document.controller;
 import com.arothy.search.api.blog.document.dto.BlogDocumentQuery;
 import com.arothy.search.api.blog.document.dto.BlogDocumentResponse;
 import com.arothy.search.api.blog.document.service.BlogSearchService;
-import com.arothy.search.common.exception.GeneralException;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,9 +23,13 @@ public class BlogDocumentSearchController {
 
     final BlogSearchService blogSearchService;
 
+    @Operation(summary = "블로그 검색")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = BlogDocumentResponse.class)))
+    })
     @GetMapping
-    public BlogDocumentResponse getBlogDocuments(@ModelAttribute @Valid BlogDocumentQuery blogDocumentQuery) {
-        return blogSearchService.search(blogDocumentQuery);
+    public BlogDocumentResponse search(@ModelAttribute @Valid BlogDocumentQuery blogDocumentQuery) {
+        return blogSearchService.getBlogDocuments(blogDocumentQuery);
     }
 
 }

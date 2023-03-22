@@ -18,7 +18,7 @@ public class DefaultBlogSearchServiceImpl implements BlogSearchService {
     final KakaoBlogSearchApi kakaoBlogSearchApi;
 
     @Override
-    public BlogDocumentResponse search(BlogDocumentQuery param) {
+    public BlogDocumentResponse getBlogDocuments(BlogDocumentQuery param) {
         blogKeywordCounterService.increaseCount(param.getQuery());
         KakaoBlogResponse<List<KakaoBlog>> kakaoBlogResponse = kakaoBlogSearchApi.getBlog(param.toKakaoApiQuery());
         return BlogDocumentResponse.ofKakao(kakaoBlogResponse, param);
