@@ -4,7 +4,6 @@ import com.arothy.search.api.blog.document.dto.BlogDocumentQuery;
 import com.arothy.search.api.blog.document.dto.BlogDocumentResponse;
 import com.arothy.search.api.blog.document.service.BlogSearchService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

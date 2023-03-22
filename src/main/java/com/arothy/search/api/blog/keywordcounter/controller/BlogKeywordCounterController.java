@@ -1,6 +1,5 @@
 package com.arothy.search.api.blog.keywordcounter.controller;
 
-import com.arothy.search.api.blog.document.dto.BlogDocumentResponse;
 import com.arothy.search.api.blog.keywordcounter.dto.BlogKeywordResponse;
 import com.arothy.search.api.blog.keywordcounter.service.BlogKeywordCounterService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -10,7 +9,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
