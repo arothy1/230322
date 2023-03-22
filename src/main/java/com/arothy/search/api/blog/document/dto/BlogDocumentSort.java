@@ -1,7 +1,6 @@
 package com.arothy.search.api.blog.document.dto;
 
 import com.arothy.search.external.com.kakao.blogsearch.api.protocol.request.KakaoBlogSort;
-import java.util.Arrays;
 
 public enum BlogDocumentSort {
 
