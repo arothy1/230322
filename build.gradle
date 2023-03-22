@@ -1,0 +1,65 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.4'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id "com.github.node-gradle.node" version "3.1.0"
+}
+
+group = 'com.arothy'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.cloud:spring-cloud-starter-openfeign:4.0.1")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation("io.github.openfeign:feign-okhttp:12.2")
+    implementation("io.github.openfeign:feign-jackson:12.2")
+    implementation("io.github.openfeign:feign-slf4j:12.2")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
+
+    compileOnly("org.projectlombok:lombok")
+    runtimeOnly("com.h2database:h2")
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+    annotationProcessor("org.projectlombok:lombok")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+/*
+node {
+    version = '14.17.1'
+    npmVersion = '6.14.13'
+    npmInstallCommand = 'install'
+    download = true
+    workDir = file("${project.buildDir}/src/vue")
+    npmWorkDir = file("${project.buildDir}/src/vue")
+    nodeModulesDir = file("${project.projectDir}/src/vue")
+}
+
+task installNpm(type: NpmTask) {
+    args = ['install']
+}
+
+task npmBuild(type: NpmTask, dependsOn: ['npmInstall']) {
+    args = ["run", "build"]
+}
+
+// gradle build 시 수행되는 processResources task가 실행되기 전에 npmBuild task를 실행하라.
+processResources.dependsOn 'npmBuild'
+
+*/
+bootJar {
+    destinationDirectory = file("./deploy")
+    archivesBaseName = "search"
+    archiveFileName = "arothy1-search.jar"
+}
