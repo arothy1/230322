@@ -1,18 +1,13 @@
 plugins {
-    java
-    id("org.springframework.boot") version "3.0.4"
-    id("io.spring.dependency-management") version "1.1.0"
+    id 'java'
+    id 'org.springframework.boot' version '3.0.4'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id "com.github.node-gradle.node" version "3.1.0"
 }
 
-group = "com.arothy"
-version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_17
-
-configurations {
-    compileOnly {
-        extendsFrom(configurations.annotationProcessor.get())
-    }
-}
+group = 'com.arothy'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
@@ -36,6 +31,35 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
-tasks.withType<Test> {
+tasks.named('test') {
     useJUnitPlatform()
+}
+
+/*
+node {
+    version = '14.17.1'
+    npmVersion = '6.14.13'
+    npmInstallCommand = 'install'
+    download = true
+    workDir = file("${project.buildDir}/src/vue")
+    npmWorkDir = file("${project.buildDir}/src/vue")
+    nodeModulesDir = file("${project.projectDir}/src/vue")
+}
+
+task installNpm(type: NpmTask) {
+    args = ['install']
+}
+
+task npmBuild(type: NpmTask, dependsOn: ['npmInstall']) {
+    args = ["run", "build"]
+}
+
+// gradle build 시 수행되는 processResources task가 실행되기 전에 npmBuild task를 실행하라.
+processResources.dependsOn 'npmBuild'
+
+*/
+bootJar {
+    destinationDirectory = file("./deploy")
+    archivesBaseName = "search"
+    archiveFileName = "arothy1-search.jar"
 }
