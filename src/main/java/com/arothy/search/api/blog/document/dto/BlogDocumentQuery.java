@@ -1,26 +1,27 @@
 package com.arothy.search.api.blog.document.dto;
 
-import com.arothy.search.common.validator.Enum;
+import com.arothy.search.common.exception.GeneralException;
 import com.arothy.search.external.com.kakao.blogsearch.api.protocol.request.KakaoBlogSearchRequest;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
+import lombok.extern.slf4j.Slf4j;
 
 @Getter
 @Setter
+@Slf4j
 public class BlogDocumentQuery {
 
+    @NotNull @NotEmpty
     String query;
     @Min(1) @Max(50)
     Integer page = 1;
     @Min(1) @Max(50)
     Integer itemsPerPage = 10;
 
-//    @Enum(enumClass = BlogDocumentSort.class)
     BlogDocumentSort sort = BlogDocumentSort.ACCURACY;
 
     public KakaoBlogSearchRequest toKakaoApiQuery() {
