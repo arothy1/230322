@@ -1,8 +1,10 @@
 # hello world
 
 ### 실행파일
-- 
-- `java -jar deploy/arothy1-search.jar`
+- download
+  - https://github.com/arothy1/230322/blob/master/deploy/arothy1-search.jar
+- execute
+  - `java -jar deploy/arothy1-search.jar`
 
 ### 구성
 - backend
