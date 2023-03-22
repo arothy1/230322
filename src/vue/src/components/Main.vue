@@ -15,7 +15,7 @@
         <v-text-field
           v-model="query"
           placeholder="검색어를 입력하세요.[ENTER]"
-          @keyup.enter="getBlogs"
+          @keyup.enter="getBlogs(true)"
           :loading="loading"
         >
           <template v-slot:append-outer>
@@ -69,12 +69,12 @@ export default {
           alert(err)
         })
     },
-    getBlogs () {
+    getBlogs (increaseCount) {
       if (this.loading) {
         return
       }
       this.loading = true
-      this.blogs = this.$http.get(`/api/blog/documents?query=${this.query}&page=${this.pagination.page}&itemsPerPage=${this.pagination.itemsPerPage}&sort=${this.sort}`)
+      this.blogs = this.$http.get(`/api/blog/documents?query=${this.query}&page=${this.pagination.page}&itemsPerPage=${this.pagination.itemsPerPage}&sort=${this.sort}&increaseSearchCount=${increaseCount}`)
       .then(res => {
         this.blogs = res.data.blogDocuments
         this.pagination = res.data.pagination
@@ -92,14 +92,14 @@ export default {
         return
       }
       this.pagination.page = this.pagination.page - 1
-      this.getBlogs()
+      this.getBlogs(false)
     },
     next () {
       if (!this.blogs.length || this.pagination.totalCount / this.pagination.itemsPerPage == this.pagination.page) {
         return
       }
       this.pagination.page = this.pagination.page + 1
-      this.getBlogs()
+      this.getBlogs(false)
     }
   }
 }
